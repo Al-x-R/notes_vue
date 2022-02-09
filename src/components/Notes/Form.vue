@@ -6,7 +6,7 @@
           v-model="value"
           placeholder="Type your note"
       />
-      <TagsList @onItemClick="handleTagClick" :items="tags" isActive />
+      <TagsList @onItemClick="handleTagClick" :items="tags" />
       <button class="btn btnPrimary" type="submit">Add new note</button>
     </form>
   </div>
