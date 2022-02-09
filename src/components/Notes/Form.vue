@@ -6,18 +6,21 @@
           v-model="value"
           placeholder="Type your note"
       />
-      <br>
+      <TagsList @onItemClick="handleTagClick" :items="tags" />
       <button class="btn btnPrimary" type="submit">Add new note</button>
     </form>
   </div>
 </template>
 
 <script>
+import TagsList from '../Tags/TagsList';
 export default {
   name: 'Form',
+  components: { TagsList },
   data() {
     return {
-      value: ''
+      value: '',
+      tags: ['tag1', 'tag2', 'tag3']
     }
   },
   methods: {
@@ -25,6 +28,9 @@ export default {
       this.$emit('onSubmit', this.value)
       this.value = ''
     },
+    handleTagClick(tag) {
+      console.log(tag);
+    }
   }
 };
 </script>
