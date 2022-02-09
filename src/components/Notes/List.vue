@@ -2,18 +2,24 @@
   <div class="notes-list">
     <div class="note-item" v-for="(note, idx) in items" :key="idx">
       <div class="note-header">
-        <p>{{note}}</p>
-        <p style="cursor: pointer;" @click="$emit('onRemove', idx)" >
+        <p>{{ note.title }}</p>
+        <p style="cursor: pointer;" @click="$emit('onRemove', idx)">
           &#10005;
         </p>
+      </div>
+      <div class="note-footer">
+        <TagsList isPreview v-if="note.tags[0]" :items="note.tags"/>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import TagsList from '../Tags/TagsList';
+
 export default {
   name: 'List',
+  components: { TagsList },
   props: {
     items: {
       type: Array,
@@ -36,6 +42,7 @@ export default {
   background-color: #ffffff;
   transition: all 0.25s cubic-bezier(0.02, 0.01, 0.47, 1);
   box-shadow: 0 30px 30px rgba(0, 0, 0, 0.02);
+
   &:hover {
     box-shadow: 0 30px 30px rgba(0, 0, 0, 0.04);
     transform: translate(0, -6px);

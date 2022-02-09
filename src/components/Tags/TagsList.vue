@@ -35,7 +35,7 @@ export default {
 
 <style lang="scss">
 .tags-list {
-  padding: 10px 0 15px;
+  padding: 10px 0 10px;
   display: flex;
   justify-content: center;
 }
