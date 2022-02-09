@@ -16,6 +16,11 @@ export const links = [
         alias: 'home',
         url: '/',
     },
+    {
+        title: 'Users',
+        alias: 'users',
+        url: '/users',
+    },
     // {
     //     title: 'About',
     //     alias: 'about',
