@@ -1,9 +1,8 @@
 <template>
-  <div class="notes-list">
-    <div class="note-item" v-for="(note, idx) in items" :key="idx">
+    <div class="note-item"  v-for="(note, idx) in Notes" :key="idx">
       <div class="note-header">
         <p>{{ note.title }}</p>
-        <p style="cursor: pointer;" @click="$emit('onRemove', idx)">
+        <p style="cursor: pointer;" @click="handleRemoveNote(idx)">
           &#10005;
         </p>
       </div>
@@ -11,7 +10,6 @@
         <TagsList isPreview v-if="note.tags[0]" :items="note.tags"/>
       </div>
     </div>
-  </div>
 </template>
 
 <script>
@@ -20,11 +18,15 @@ import TagsList from '../Tags/TagsList';
 export default {
   name: 'List',
   components: { TagsList },
-  props: {
-    items: {
-      type: Array,
-      required: true
+  methods: {
+    handleRemoveNote(idx) {
+      this.$store.dispatch('deleteNoteAction', idx);
     }
+  },
+  computed: {
+    Notes() {
+      return this.$store.getters.getNotes;
+    },
   }
 };
 </script>
