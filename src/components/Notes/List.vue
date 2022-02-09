@@ -3,7 +3,7 @@
     <div class="note-item" v-for="(note, idx) in items" :key="idx">
       <div class="note-header">
         <p>{{note}}</p>
-        <p style="cursor: pointer;" >
+        <p style="cursor: pointer;" @click="$emit('onRemove', idx)" >
           &#10005;
         </p>
       </div>

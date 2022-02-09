@@ -2,8 +2,8 @@
 <div class="wrapper">
   <div class="container">
     <HelloWorld msg="Welcome" />
-    <Form />
-    <List :items="notes" />
+    <Form @onSubmit="handleSubmit" />
+    <List @onRemove="handleRemove" :items="notes" />
   </div>
 </div>
 </template>
@@ -18,6 +18,14 @@ export default {
     List,
     Form,
     HelloWorld
+  },
+  methods: {
+    handleRemove(index) {
+      this.notes.splice(index, 1)
+    },
+    handleSubmit(note) {
+      this.notes.push(note)
+    }
   },
   data() {
     return {
